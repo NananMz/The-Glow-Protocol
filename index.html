@@ -1,146 +1,222 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Protocolo Deep Glow</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo Deep Glow | A Ciência do Rejuvenescimento Noturno</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-<style>
-body{
-  margin:0;
-  font-family: 'Arial', sans-serif;
-  background:#ffffff;
-  color:#111;
-  line-height:1.6;
-}
+    <style>
+        :root {
+            --primary: #d4af37; /* Dourado Premium */
+            --dark-bg: #0a0a0a;
+            --text-light: #f4f4f4;
+            --accent: #ebcf8a;
+        }
 
-.container{
-  max-width:900px;
-  margin:auto;
-  padding:60px 20px;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-h1{
-  font-size:38px;
-  text-align:center;
-}
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-h2{
-  font-size:28px;
-  margin-top:40px;
-}
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-p{
-  font-size:18px;
-  margin:20px 0;
-}
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 20px;
+        }
 
-.btn{
-  display:inline-block;
-  background:#000;
-  color:#fff;
-  padding:16px 35px;
-  text-decoration:none;
-  font-size:18px;
-  border-radius:8px;
-  margin-top:20px;
-}
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
 
-.btn:hover{
-  background:#333;
-}
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
 
-.dark{
-  background:#0e0e0e;
-  color:#fff;
-}
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+            color: #ccc;
+        }
 
-.center{
-  text-align:center;
-}
+        /* Botões */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #000;
+            padding: 20px 45px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
 
-.highlight{
-  font-weight:bold;
-}
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.5);
+        }
 
-ul{
-  padding-left:20px;
-}
+        /* Seção Dark */
+        .dark-section {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            position: relative;
+        }
 
-.guarantee{
-  background:#f5f5f5;
-  padding:40px;
-  border-radius:10px;
-}
-</style>
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
 
+        .image-box img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Características/Lista */
+        .feature-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li::before {
+            content: '✦';
+            color: var(--primary);
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Garantia Card */
+        .guarantee-card {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 50px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.05);
+            margin-top: -50px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .guarantee-badge {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        /* Footer Sticky */
+        .footer-cta {
+            background: #fdfaf3;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="container center">
-  <h1>O Método Noturno Que Ativa Sua Regeneração Celular Enquanto Você Dorme</h1>
-  <p>Descubra como transformar seu sono no maior aliado da sua beleza, firmeza e juventude natural.</p>
-  <a href="SEU_LINK_KIWIFY_AQUI" class="btn">QUERO ATIVAR MEU DEEP GLOW</a>
-</div>
+    <header class="hero">
+        <div class="container animate__animated animate__fadeIn">
+            <div class="hero-content">
+                <p style="color: var(--primary); font-weight: 700; letter-spacing: 3px;">BELEZA INTEGRADA</p>
+                <h1>O Segredo das Mulheres que "Dormem 10 anos" em uma Noite</h1>
+                <p>O Protocolo Deep Glow ativa os interruptores biológicos da juventude enquanto você descansa. Pele firme, olhar descansado e viço natural.</p>
+                <a href="SEU_LINK_KIWIFY_AQUI" class="btn">Quero o Protocolo Deep Glow</a>
+            </div>
+        </div>
+    </header>
 
-<div class="dark">
-  <div class="container">
-    <h2>O Que Quase Ninguém Te Conta Sobre Envelhecimento</h2>
-    <p>Não é falta de creme. Não é genética.</p>
-    <p>O verdadeiro problema é que seu corpo pode estar liberando hormônios que sabotam seu colágeno durante a noite — o momento mais importante da regeneração celular.</p>
-    <p>Se você acorda com o rosto inchado, pele opaca ou sinais que parecem surgir do nada… existe uma explicação biológica.</p>
-  </div>
-</div>
+    <section class="dark-section">
+        <div class="container grid">
+            <div class="image-box animate__animated animate__fadeInLeft">
+                <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&q=80&w=800" alt="Mulher descansando">
+            </div>
+            <div class="animate__animated animate__fadeInRight">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Por que cremes caros não resolvem sozinhos?</h2>
+                <p>A ciência revela que o envelhecimento acelerado acontece devido ao <strong>Cortisol Noturno</strong>. Se o seu corpo não entra em estado de reparação profunda, nenhum sérum do mundo pode salvar sua pele.</p>
+                <p>O Deep Glow não é apenas "skincare", é engenharia biológica aplicada ao seu sono.</p>
+                <ul class="feature-list">
+                    <li>Drenagem linfática natural durante o sono</li>
+                    <li>Pico de produção de colágeno endógeno</li>
+                    <li>Desinflamação celular profunda</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-<div class="container">
-  <h2>Apresentando o Protocolo Deep Glow</h2>
-  <p>Um protocolo estruturado para transformar o seu período de sono no momento mais poderoso de rejuvenescimento natural.</p>
+    <section class="container" style="text-align: center;">
+        <h2 style="font-size: 3rem; margin-bottom: 40px;">O que você vai dominar:</h2>
+        <div class="grid" style="text-align: left;">
+            <div style="padding: 30px; background: #fafafa; border-radius: 15px;">
+                <h3 style="color: var(--primary); margin-bottom: 10px;">Fase 1: O Detox do Cortisol</h3>
+                <p>Como silenciar os hormônios do estresse que destroem a elastina da sua pele antes de você deitar.</p>
+            </div>
+            <div style="padding: 30px; background: #fafafa; border-radius: 15px;">
+                <h3 style="color: var(--primary); margin-bottom: 10px;">Fase 2: Ativação Celular</h3>
+                <p>O ritual de 5 minutos que prepara suas células para a regeneração máxima em nível mitocondrial.</p>
+            </div>
+        </div>
+        <br><br>
+        <a href="wa.me/+5589994745007" class="btn">GARANTIR MEU ACESSO COM DESCONTO</a>
+    </section>
 
-  <ul>
-    <li>✔ Ativação estratégica da regeneração celular</li>
-    <li>✔ Redução de inchaço e aparência cansada</li>
-    <li>✔ Melhora da firmeza e viço da pele</li>
-    <li>✔ Rotina simples e aplicável imediatamente</li>
-  </ul>
+    <section class="container">
+        <div class="guarantee-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/3472/3472620.png" alt="Selo 7 dias" class="guarantee-badge">
+            <h2>Risco Zero: Garantia Incondicional</h2>
+            <p style="max-width: 600px; margin: 20px auto;">Você tem 7 dias para testar o método. Se não notar seu rosto mais descansado e a pele com mais viço já nas primeiras manhãs, nós devolvemos cada centavo. Sem perguntas.</p>
+        </div>
+    </section>
 
-  <div class="center">
-    <a href="SEU_LINK_KIWIFY_AQUI" class="btn">GARANTIR ACESSO AGORA</a>
-  </div>
-</div>
-
-<div class="dark">
-  <div class="container">
-    <h2>Por Que Isso Funciona?</h2>
-    <p>Durante o sono profundo, seu corpo libera hormônios responsáveis pela reparação e reconstrução celular.</p>
-    <p>Quando você aprende a alinhar ambiente, hábitos e estímulos biológicos, ativa um ciclo natural de regeneração que impacta diretamente sua aparência.</p>
-  </div>
-</div>
-
-<div class="container">
-  <h2>Para Quem É Esse Protocolo?</h2>
-  <ul>
-    <li>Mulheres que querem prevenir envelhecimento precoce</li>
-    <li>Quem acorda com inchaço facial constante</li>
-    <li>Quem sente que os cosméticos não estão funcionando</li>
-    <li>Quem busca beleza natural e saúde integrada</li>
-  </ul>
-
-  <div class="center">
-    <a href="SEU_LINK_KIWIFY_AQUI" class="btn">QUERO COMEÇAR HOJE</a>
-  </div>
-</div>
-
-<div class="container guarantee">
-  <h2>Garantia Incondicional de 7 Dias</h2>
-  <p>Teste o Protocolo Deep Glow por 7 dias.  
-  Se não sentir diferença, devolvemos 100% do seu investimento.</p>
-</div>
-
-<div class="container center">
-  <h2>Você Pode Continuar Tentando Métodos Aleatórios...</h2>
-  <p>Ou pode ativar um protocolo estruturado baseado na biologia real do seu corpo.</p>
-  <a href="SEU_LINK_KIWIFY_AQUI" class="btn">ATIVAR MEU PROTOCOLO AGORA</a>
-</div>
+    <footer class="footer-cta">
+        <div class="container">
+            <h2 style="font-size: 2.5rem;">Sua pele de amanhã é decidida hoje.</h2>
+            <p>Junte-se a centenas de mulheres que pararam de lutar contra o tempo e começaram a usar a biologia a seu favor.</p>
+            <br>
+            <a href="SEU_LINK_KIWIFY_AQUI" class="btn" style="padding: 25px 60px; font-size: 1.3rem;">ATIVAR PROTOCOLO DEEP GLOW</a>
+            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.6;">© 2026 Protocolo Deep Glow. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
