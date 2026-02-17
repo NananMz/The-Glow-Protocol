@@ -19,7 +19,7 @@
             --transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        /* Reset & Base */
+        /* --- BASE & RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
         body { 
@@ -28,92 +28,51 @@
             color: var(--text); 
             overflow-x: hidden; 
             line-height: 1.6; 
-            letter-spacing: 0.01em; /* Melhoria no espaçamento entre palavras */
+            letter-spacing: 0.01em;
         }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; }
-        h1, h2, h3 { font-family: 'Archivo', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.1; }
+        h1, h2, h3 { font-family: 'Archivo', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.05; }
         .italic-serif { font-family: 'Playfair Display', serif; font-style: italic; text-transform: none; letter-spacing: 0; }
-        p { margin-bottom: 1rem; }
 
-        /* Language Selector */
-        .lang-selector {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
+        /* --- LANGUAGE SELECTOR --- */
+        .lang-selector { position: absolute; top: 20px; right: 20px; z-index: 1000; }
         .lang-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 8px 16px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
+            background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text);
+            padding: 8px 16px; font-size: 12px; font-weight: 600; cursor: pointer; border-radius: 4px;
+            display: flex; align-items: center; gap: 8px; transition: var(--transition);
         }
-        .lang-btn:hover { border-color: var(--gold); background: rgba(197, 164, 126, 0.1); }
         .lang-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            margin-top: 8px;
-            display: none;
-            flex-direction: column;
-            min-width: 140px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: absolute; top: 100%; right: 0; background: var(--surface);
+            border: 1px solid var(--border); border-radius: 4px; margin-top: 8px;
+            display: none; flex-direction: column; min-width: 140px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .lang-dropdown a {
-            padding: 12px 16px;
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 13px;
-            transition: var(--transition);
-        }
+        .lang-dropdown a { padding: 12px 16px; color: var(--text-dim); text-decoration: none; font-size: 13px; transition: var(--transition); }
         .lang-dropdown a:hover { background: #111; color: var(--gold); }
         .lang-selector:hover .lang-dropdown { display: flex; }
 
-        /* Animations */
+        /* --- ANIMATIONS --- */
         @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); } 70% { transform: scale(1.02); box-shadow: 0 0 0 15px rgba(46, 204, 113, 0); } 100% { transform: scale(1); } }
         @keyframes shine { from { left: -100%; } to { left: 100%; } }
         
-        /* Hero */
+        /* --- HERO --- */
         .hero { padding: 140px 0 80px; text-align: center; border-bottom: 1px solid var(--border); }
         .hero span { color: var(--gold); letter-spacing: 5px; font-weight: 700; font-size: 13px; margin-bottom: 25px; display: block; }
         .hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); margin-bottom: 35px; }
         .hero p { max-width: 850px; margin: 0 auto 50px; font-size: 1.25rem; color: var(--text-dim); font-weight: 300; }
 
-        /* CTA Button */
+        /* --- CTA BUTTON --- */
         .btn-cta {
-            position: relative;
-            display: inline-block;
-            background: var(--green);
-            color: #000;
-            padding: 24px 50px;
-            font-size: 1.2rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 4px;
-            overflow: hidden;
-            transition: var(--transition);
-            animation: pulse 2s infinite;
-            text-align: center;
-            width: auto;
+            position: relative; display: inline-block; background: var(--green); color: #000;
+            padding: 24px 50px; font-size: 1.2rem; font-weight: 900; text-transform: uppercase;
+            text-decoration: none; border-radius: 4px; overflow: hidden; transition: var(--transition);
+            animation: pulse 2s infinite; text-align: center;
         }
         .btn-cta:hover { transform: scale(1.05); background: #27ae60; box-shadow: 0 10px 40px rgba(46, 204, 113, 0.3); }
         .btn-cta::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation: shine 3s infinite; }
         .microcopy { display: block; margin-top: 15px; font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Sections & Grids */
+        /* --- SECTIONS & GRIDS --- */
         .section-padding { padding: 100px 0; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
         .label { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; }
@@ -122,7 +81,7 @@
         .card:hover { border-color: var(--gold); transform: translateY(-5px); }
         .card h3 { font-size: 1.6rem; margin-bottom: 20px; color: var(--gold); }
 
-        /* Offer Block & Timer */
+        /* --- OFFER BLOCK & TIMER --- */
         .offer-wrapper { background: radial-gradient(circle at center, #111 0%, #050505 100%); padding: 100px 0; border-top: 1px solid var(--border); }
         .offer-card { max-width: 650px; margin: 0 auto; background: #000; border: 1px solid var(--gold); border-radius: 8px; overflow: hidden; }
         .offer-badge { background: var(--gold); color: #000; padding: 15px; font-weight: 900; font-size: 12px; text-align: center; text-transform: uppercase; }
@@ -141,106 +100,104 @@
         .price-old { text-decoration: line-through; color: var(--text-dim); font-size: 1.1rem; }
         .price-main { font-size: 4.5rem; font-weight: 900; color: var(--text); line-height: 1; margin: 15px 0; letter-spacing: -2px; }
 
-        /* Accordion FAQ */
+        /* --- FAQ ACCORDION --- */
         .faq { padding: 100px 0; background: #fff; color: #000; }
         .faq h2 { color: #000; text-align: center; margin-bottom: 60px; font-size: 3rem; }
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid #eee; }
         .faq-question {
-            width: 100%;
-            padding: 25px 0;
-            background: none;
-            border: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            text-align: left;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            transition: var(--transition);
+            width: 100%; padding: 25px 0; background: none; border: none; display: flex;
+            justify-content: space-between; align-items: center; cursor: pointer; text-align: left;
+            font-size: 1.1rem; font-weight: 700; text-transform: uppercase; transition: var(--transition);
         }
-        .faq-question:hover { color: var(--gold); }
-        .faq-icon {
-            position: relative;
-            width: 20px;
-            height: 20px;
-        }
-        .faq-icon::before, .faq-icon::after {
-            content: '';
-            position: absolute;
-            background: currentColor;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            transition: var(--transition);
-        }
-        .faq-icon::before { width: 100%; height: 2px; } /* Horizontal line */
-        .faq-icon::after { width: 2px; height: 100%; } /* Vertical line */
-        
+        .faq-icon { position: relative; width: 20px; height: 20px; }
+        .faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: currentColor; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: var(--transition); }
+        .faq-icon::before { width: 100%; height: 2px; }
+        .faq-icon::after { width: 2px; height: 100%; }
         .active .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
-        
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
-            color: #555;
-            font-size: 0.95rem;
-        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0, 1, 0, 1); color: #555; font-size: 0.95rem; }
         .faq-answer p { padding-bottom: 25px; margin: 0; }
         .active + .faq-answer { max-height: 1000px; transition: max-height 0.4s ease-in-out; }
 
-        /* Floating Social Buttons */
-        .floating-social {
-            position: fixed;
-            bottom: 30px;
-            right: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 9999;
-        }
+        /* --- FLOATING SOCIAL --- */
+        .floating-social { position: fixed; bottom: 30px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 9999; }
         .social-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: var(--transition);
+            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: white; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: var(--transition);
         }
-        .social-btn:hover { transform: scale(1.1) translateY(-5px); }
         .instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
         .whatsapp { background: #25D366; }
         .telegram { background: #0088cc; }
         .social-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
-        /* Footer */
         footer { padding: 60px 0; text-align: center; border-top: 1px solid var(--border); font-size: 10px; color: #333; letter-spacing: 2px; }
 
-        /* Responsive Corrections */
-        @media (max-width: 992px) {
-            .grid-2 { grid-template-columns: 1fr; gap: 30px; }
-            .hero h1 { font-size: 3.5rem; }
+        /* ==================================================================
+        MOBILE OPTIMIZATION (THE CORE FIX)
+        ==================================================================
+        */
+        @media (max-width: 768px) {
+            /* General Typography */
+            body { line-height: 1.5; }
+            h2 { font-size: 1.8rem !important; }
+            
+            /* Section Compactness */
+            .section-padding { padding: 50px 0; }
+            
+            /* Hero Refinement */
+            .hero { padding: 100px 0 50px; }
+            .hero span { font-size: 11px; margin-bottom: 15px; letter-spacing: 3px; }
+            .hero h1 { font-size: 2.2rem !important; margin-bottom: 25px; line-height: 1.1; padding: 0 10px; }
+            .hero p { font-size: 1.05rem; margin-bottom: 35px; padding: 0 5px; }
+            
+            /* Grid & Cards */
+            .grid-2 { grid-template-columns: 1fr; gap: 20px; }
+            .card { padding: 30px 20px; }
+            .card h3 { font-size: 1.4rem; margin-bottom: 15px; }
+            
+            /* Button Proportions */
+            .btn-cta { width: 100%; padding: 18px 20px; font-size: 1rem; }
+            .microcopy { font-size: 9px; margin-top: 10px; }
+
+            /* Offer Card Optimization */
+            .offer-wrapper { padding: 60px 0; }
+            .offer-card { border-radius: 0; border-left: none; border-right: none; }
+            .offer-content { padding: 40px 20px; }
+            
+            .timer-box { gap: 12px; margin-bottom: 25px; }
+            .timer-unit { font-size: 1.6rem; }
+            .timer-circle { min-width: 50px; }
+            .timer-label { font-size: 8px; }
+            .timer-separator { font-size: 1.5rem; }
+
+            .bullets { margin: 25px 0; }
+            .bullets li { font-size: 0.88rem; padding: 10px 0; gap: 10px; }
+            
+            .price-main { font-size: 3.2rem; margin: 10px 0; }
+            .price-old { font-size: 0.95rem; }
+
+            /* FAQ Compactness */
+            .faq { padding: 60px 0; }
+            .faq h2 { font-size: 2rem; margin-bottom: 40px; }
+            .faq-question { padding: 20px 0; font-size: 0.95rem; }
+            
+            /* Guarantee Box */
+            .section-padding .container > div[style*="border"] { padding: 40px 20px !important; }
+
+            /* Floating Social Scale */
+            .floating-social { bottom: 20px; right: 15px; gap: 8px; }
+            .social-btn { width: 44px; height: 44px; }
+            .social-btn svg { width: 20px; height: 20px; }
+
+            /* Language Selector Position */
+            .lang-selector { top: 15px; right: 15px; }
+            .lang-btn { padding: 6px 12px; font-size: 11px; }
         }
 
-        @media (max-width: 600px) {
-            .hero { padding: 100px 0 60px; }
-            .hero h1 { font-size: 2.5rem; padding: 0 10px; }
-            .hero p { font-size: 1.1rem; }
-            .btn-cta { width: 100%; padding: 20px; font-size: 1rem; }
-            .price-main { font-size: 3.5rem; }
-            .timer-unit { font-size: 1.8rem; }
-            .timer-circle { min-width: 50px; }
-            .section-padding { padding: 60px 0; }
-            .card { padding: 30px 20px; }
-            .faq h2 { font-size: 2.2rem; }
-            .floating-social { right: 15px; bottom: 15px; }
-            .social-btn { width: 45px; height: 45px; }
+        /* Prevent horizontal overflow on small devices */
+        @media (max-width: 380px) {
+            .hero h1 { font-size: 1.9rem !important; }
+            .price-main { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -265,7 +222,7 @@
         <h1>Wake Up With 10-Year <span class="italic-serif">Younger</span> Looking Skin Using This 5-Minute Nightly Ritual</h1>
         <p>Master the biological protocol of nocturnal regeneration. A scientific "skin-hack" designed for high-performers who demand peak cellular repair without expensive clinics or invasive procedures.</p>
         
-        <div style="margin-top: 40px;">
+        <div style="margin-top: 10px;">
             <a href="#offer" class="btn-cta">Unlock The Glow Today</a>
             <span class="microcopy">Secure Checkout • Instant Digital Access</span>
         </div>
@@ -276,7 +233,7 @@
             <div>
                 <span class="label">The Hidden Sabotage</span>
                 <h2>Your $500 Serums are <span style="color:var(--gold)">Useless</span> Without This.</h2>
-                <p style="color: var(--text-dim); margin-top: 25px;">The skincare industry wants you to believe the solution is in a bottle. But if your <strong>Nocturnal Cortisol</strong> is high, your body is physically incapable of producing collagen. You aren't just sleeping; you're aging under the sheets.</p>
+                <p style="color: var(--text-dim); margin-top: 25px;">The skincare industry wants you to believe the solution is in a bottle. But if your <strong>Nocturnal Cortisol</strong> is high, your body is physically incapable of producing collagen.</p>
             </div>
             <div class="card">
                 <h3>The Invisible Enemy</h3>
@@ -288,19 +245,19 @@
     <section class="section-padding" style="background: var(--surface);">
         <div class="container" style="text-align:center">
             <span class="label">The Unique Mechanism</span>
-            <h2 style="margin-bottom: 40px;">The "Biological Reset" Protocol</h2>
+            <h2 style="margin-bottom: 30px;">The "Biological Reset" Protocol</h2>
             <div class="grid-2" style="text-align:left">
-                <p>The Deep Glow Protocol isn't skincare. It's <strong>Biological Architecture</strong>. By aligning your circadian rhythm with specific thermal and hormonal triggers, you force your body to release peak GH (Growth Hormone) precisely when your skin cells begin their mitosis phase.</p>
+                <p>The Deep Glow Protocol isn't skincare. It's <strong>Biological Architecture</strong>. By aligning your circadian rhythm with specific triggers, you force your body to release peak GH precisely when your cells begin repair.</p>
                 <p>This is the "Golden Window" of repair. Master this, and you bypass years of premature aging in just 21 nights of application.</p>
             </div>
-            <div style="margin-top: 60px;">
+            <div style="margin-top: 40px;">
                 <a href="#offer" class="btn-cta">Start My Transformation Now</a>
             </div>
         </div>
     </section>
 
     <section class="section-padding container">
-        <h2 style="text-align:center; margin-bottom: 60px;">What's Inside The Protocol</h2>
+        <h2 style="text-align:center; margin-bottom: 50px;">What's Inside The Protocol</h2>
         <div class="grid-2">
             <div class="card">
                 <span class="label">Step 01</span>
@@ -318,7 +275,6 @@
                 <span class="label">Step 03</span>
                 <h3>The Radiant Awakening</h3>
                 <p>✔️ <strong>Instant Glow:</strong> Use 3-minute lymphatic activation to drain toxins and seal pores upon waking.</p>
-                <p>✔️ <strong>Visible Transformation:</strong> Achieve that "lit-from-within" look that no foundation can replicate.</p>
             </div>
             <div class="card">
                 <span class="label">Step 04</span>
@@ -352,8 +308,8 @@
                     </div>
 
                     <span class="label">The Full System</span>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Deep Glow Protocol</h2>
-                    <span class="price-anchor" style="display:block; margin-bottom:20px;">Clinics charge $1,200+ for similar results. You get the blueprint for:</span>
+                    <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Deep Glow Protocol</h2>
+                    <span class="price-anchor" style="display:block; margin-bottom:15px; font-size: 0.85rem;">Clinics charge $1,200+ for similar results. You get:</span>
 
                     <ul class="bullets">
                         <li>Biological Nocturnal Regeneration Blueprint</li>
@@ -366,13 +322,13 @@
                         <li>Biological Premature Aging Shield</li>
                     </ul>
 
-                    <div style="margin-bottom: 30px;">
+                    <div style="margin-bottom: 25px;">
                         <span class="price-old">Regular Price: $497.00</span>
                         <div class="price-main">$47</div>
-                        <p style="color:var(--text-dim); font-size: 13px;">One-time payment. Lifetime access.</p>
+                        <p style="color:var(--text-dim); font-size: 12px;">One-time payment. Lifetime access.</p>
                     </div>
 
-                    <a href="#" class="btn-cta" style="width: 100%;">Get Instant Access Now</a>
+                    <a href="#" class="btn-cta">Get Instant Access Now</a>
                     <span class="microcopy">100% Risk-Free • Secure Checkout</span>
                 </div>
             </div>
@@ -381,8 +337,8 @@
 
     <section class="section-padding container" style="text-align:center">
         <div style="max-width: 800px; margin: 0 auto; border: 1px solid var(--border); padding: 60px; border-radius: 8px;">
-            <h2 style="color: var(--gold); margin-bottom: 25px;">The "Radiant Skin" Guarantee</h2>
-            <p style="font-size: 1.1rem; color: var(--text-dim);">Try the Deep Glow Protocol for 14 full days. If you don't wake up feeling more revitalized, or if you don't see a visible difference in your skin's firmness and glow, simply send a one-word email. I will refund every penny of your investment. No questions. No friction. <strong>I take 100% of the risk.</strong></p>
+            <h2 style="color: var(--gold); margin-bottom: 20px;">The "Radiant Skin" Guarantee</h2>
+            <p style="font-size: 1rem; color: var(--text-dim); line-height: 1.5;">Try the Deep Glow Protocol for 14 full days. If you don't wake up feeling more revitalized, or if you don't see a visible difference in your skin's firmness, simply send a one-word email. I will refund every penny. No questions. <strong>I take 100% of the risk.</strong></p>
         </div>
     </section>
 
@@ -392,145 +348,89 @@
             <div class="faq-container">
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span><span class="faq-num">01.</span> Does this work for any age?</span>
+                        <span><span class="faq-num" style="color: var(--gold); margin-right: 8px;">01.</span> Does this work for any age?</span>
                         <span class="faq-icon"></span>
                     </button>
                     <div class="faq-answer">
-                        <p>Yes. Cellular regeneration is a biological constant. Whether you are 25 or 65, the protocol optimizes your existing repair mechanisms for peak efficiency regardless of your starting point.</p>
+                        <p>Yes. Cellular regeneration is a biological constant. Whether you are 25 or 65, the protocol optimizes your existing repair mechanisms for peak efficiency.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span><span class="faq-num">02.</span> Do I need expensive products?</span>
+                        <span><span class="faq-num" style="color: var(--gold); margin-right: 8px;">02.</span> Do I need expensive products?</span>
                         <span class="faq-icon"></span>
                     </button>
                     <div class="faq-answer">
-                        <p>No. This is about biological timing and environment. We suggest accessible actives, but the methodology is what drives the results, not the price tag of your creams.</p>
+                        <p>No. This is about biological timing and environment. The methodology drives the results, not the price tag of your creams.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span><span class="faq-num">03.</span> How soon will I see results?</span>
+                        <span><span class="faq-num" style="color: var(--gold); margin-right: 8px;">03.</span> How soon will I see results?</span>
                         <span class="faq-icon"></span>
                     </button>
                     <div class="faq-answer">
-                        <p>You will feel the reduction in inflammation within 48 hours. Visible skin density changes and "the glow" typically occur within 14-21 days of consistent application.</p>
+                        <p>You will feel the reduction in inflammation within 48 hours. Visible skin density changes typically occur within 14-21 days.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span><span class="faq-num">04.</span> Is it safe?</span>
+                        <span><span class="faq-num" style="color: var(--gold); margin-right: 8px;">04.</span> Is my payment secure?</span>
                         <span class="faq-icon"></span>
                     </button>
                     <div class="faq-answer">
-                        <p>100%. This is based on chronobiology and human physiology. There are no invasive needles, aggressive chemicals, or risky side effects involved.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span><span class="faq-num">05.</span> How do I receive access?</span>
-                        <span class="faq-icon"></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Immediately. After checkout, you will receive an email with your unique login credentials to our private member portal where all materials are hosted.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span><span class="faq-num">06.</span> Is this for men too?</span>
-                        <span class="faq-icon"></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Absolutely. Cortisol management and nocturnal repair are essential for male skin health and overall cognitive performance. The science is the same.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span><span class="faq-num">07.</span> What if I travel?</span>
-                        <span class="faq-icon"></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>The protocol is portable. We teach you how to engineer any environment—from hotels to airplanes—to ensure you don't lose progress while on the move.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span><span class="faq-num">08.</span> Is my payment secure?</span>
-                        <span class="faq-icon"></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes. We use industry-standard 256-bit SSL encryption. Your payment is processed through secure gateways like Stripe or PayPal, and your data is never stored on our servers.</p>
+                        <p>Yes. We use industry-standard 256-bit SSL encryption. Your payment is processed through secure gateways like Stripe or PayPal.</p>
                     </div>
                 </div>
             </div>
-            <div style="text-align:center; margin-top: 60px;">
-                <a href="#offer" class="btn-cta">I'm Ready. Unlock The Glow.</a>
+            <div style="text-align:center; margin-top: 50px;">
+                <a href="#offer" class="btn-cta">Unlock The Glow.</a>
             </div>
         </div>
     </section>
 
     <div class="floating-social">
-        <a href="https://instagram.com/theglowprotocoll" target="_blank" class="social-btn instagram" aria-label="Instagram">
+        <a href="https://instagram.com/theglowprotocoll" target="_blank" class="social-btn instagram">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.848 0-3.204.012-3.584.07-4.849.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
-        <a href="#" class="social-btn whatsapp" aria-label="WhatsApp">
+        <a href="#" class="social-btn whatsapp">
             <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884 0 2.225.659 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-        </a>
-        <a href="#" class="social-btn telegram" aria-label="Telegram">
-            <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.462 15.998c-.231.231-5.025 2.084-5.256 2.176-.176.07-.333.106-.472.106-.307 0-.457-.174-.457-.457 0-.301.127-1.403.226-2.52.01-.113.02-.224.03-.332l4.756-4.422c.153-.141.056-.212-.054-.141l-5.881 3.732c-.113.07-.221.085-.316.085-.198 0-.344-.123-.483-.223l-1.923-.62c-.439-.141-.446-.446.092-.647l10.39-3.992c.437-.169.831.127.674.891l-1.34 6.411z"/></svg>
         </a>
     </div>
 
-    <footer class="container">
-        © 2026 DEEP GLOW PROTOCOL ® • THE BIOLOGICAL STANDARD. ALL RIGHTS RESERVED.
+    <footer>
+        © 2026 DEEP GLOW PROTOCOL ® • THE BIOLOGICAL STANDARD.
     </footer>
 
     <script>
-        // 1. REAL 2-HOUR TIMER (FORMAT HH:MM:SS)
+        // 1. REAL 2-HOUR TIMER
         function startTimer(duration) {
             let timer = duration;
             const hDisplay = document.getElementById('h');
             const mDisplay = document.getElementById('m');
             const sDisplay = document.getElementById('s');
-
-            const interval = setInterval(function () {
+            setInterval(function () {
                 let hours = Math.floor(timer / 3600);
                 let minutes = Math.floor((timer % 3600) / 60);
                 let seconds = Math.floor(timer % 60);
-
                 hDisplay.textContent = hours < 10 ? "0" + hours : hours;
                 mDisplay.textContent = minutes < 10 ? "0" + minutes : minutes;
                 sDisplay.textContent = seconds < 10 ? "0" + seconds : seconds;
-
-                if (--timer < 0) {
-                    // Reset to 2 hours when finished
-                    timer = duration; 
-                }
+                if (--timer < 0) timer = duration;
             }, 1000);
         }
 
-        // 2. ACCORDION FAQ LOGIC
+        // 2. ACCORDION FAQ
         const faqQuestions = document.querySelectorAll('.faq-question');
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
                 const isOpen = question.classList.contains('active');
-                
-                // Close all others
-                faqQuestions.forEach(q => {
-                    q.classList.remove('active');
-                });
-
-                // Toggle current
-                if (!isOpen) {
-                    question.classList.add('active');
-                }
+                faqQuestions.forEach(q => q.classList.remove('active'));
+                if (!isOpen) question.classList.add('active');
             });
         });
 
-        // Initialize
-        window.onload = function () {
-            startTimer(7200); // 2 hours in seconds
-        };
+        window.onload = function () { startTimer(7200); };
     </script>
 </body>
 </html>
