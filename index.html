@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo Deep Glow | The Biological Standard</title>
+    <title>Deep Glow | The Biological Standard</title>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
     
     <style>
@@ -53,29 +53,13 @@
         .btn-cta:hover { transform: scale(1.05); background: #27ae60; box-shadow: 0 10px 40px rgba(46, 204, 113, 0.3); }
         .btn-cta::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation: shine 3s infinite; }
 
-        .btn-social {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 15px 30px;
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 2px;
-            transition: 0.3s;
-            margin: 10px;
-        }
-        .btn-social:hover { background: var(--gold); color: #000; }
+        .microcopy { display: block; margin-top: 12px; font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
 
         /* Hero */
         .hero { padding: 120px 0 80px; text-align: center; border-bottom: 1px solid var(--border); }
         .hero span { color: var(--gold); letter-spacing: 5px; font-weight: 700; font-size: 13px; margin-bottom: 20px; display: block; }
-        .hero h1 { font-size: clamp(3rem, 10vw, 6.5rem); line-height: 0.85; margin-bottom: 40px; }
-        .hero p { max-width: 750px; margin: 0 auto 50px; font-size: 1.25rem; color: var(--text-dim); font-weight: 300; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 30px; }
+        .hero p { max-width: 850px; margin: 0 auto 50px; font-size: 1.25rem; color: var(--text-dim); font-weight: 300; }
 
         /* Sections */
         .section-padding { padding: 100px 0; }
@@ -91,18 +75,18 @@
         .offer-card { max-width: 600px; margin: 0 auto; background: #000; border: 1px solid var(--gold); border-radius: 8px; overflow: hidden; position: relative; }
         .offer-badge { background: var(--gold); color: #000; padding: 15px; font-weight: 900; font-size: 12px; text-align: center; text-transform: uppercase; }
         .offer-content { padding: 60px 40px; text-align: center; }
-        .timer-box { display: flex; justify-content: center; gap: 15px; margin: 30px 0; }
-        .timer-unit { color: var(--gold); font-family: 'Archivo', sans-serif; font-size: 2rem; font-weight: 900; }
+        
+        .timer-box { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+        .timer-unit { color: var(--gold); font-family: 'Archivo', sans-serif; font-size: 1.8rem; font-weight: 900; }
         .timer-label { font-size: 10px; color: var(--text-dim); display: block; }
 
         .bullets { list-style: none; text-align: left; margin: 40px 0; }
-        .bullets li { padding: 12px 0; border-bottom: 1px solid #111; font-size: 0.95rem; color: var(--text-dim); display: flex; align-items: center; }
-        .bullets li::before { content: '✦'; color: var(--gold); margin-right: 15px; font-size: 1.2rem; }
+        .bullets li { padding: 14px 0; border-bottom: 1px solid #111; font-size: 0.95rem; color: var(--text-dim); display: flex; align-items: center; }
+        .bullets li::before { content: '✔️'; color: var(--gold); margin-right: 15px; font-size: 1rem; }
 
-        .price-old { text-decoration: line-through; color: var(--text-dim); font-size: 1rem; }
-        .price-installments { font-size: 1.5rem; font-weight: 300; }
-        .price-main { font-size: 4rem; font-weight: 900; color: var(--text); line-height: 1; margin: 10px 0; }
-        .price-cash { color: var(--gold); font-size: 0.9rem; font-weight: 700; }
+        .price-old { text-decoration: line-through; color: var(--text-dim); font-size: 1.1rem; }
+        .price-main { font-size: 4rem; font-weight: 900; color: var(--text); line-height: 1; margin: 15px 0; }
+        .price-anchor { font-size: 0.9rem; color: var(--gold); font-weight: 700; margin-bottom: 20px; display: block; }
 
         /* FAQ */
         .faq { padding: 100px 0; background: #fff; color: #000; }
@@ -113,13 +97,9 @@
         .faq-item strong { display: block; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase; }
         .faq-item p { font-size: 0.9rem; color: #555; }
 
-        /* Social & Contact */
-        .contact-footer { padding: 60px 0; border-top: 1px solid var(--border); text-align: center; }
-        .social-row { display: flex; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
-
         @media (max-width: 768px) {
             .grid-2, .faq-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 3.5rem; }
+            h1 { font-size: 3rem; }
             .section-padding { padding: 60px 0; }
         }
     </style>
@@ -127,188 +107,179 @@
 <body>
 
     <header class="hero container animate">
-        <span>BIOLOGICAL PROTOCOL • ELITE ONLY</span>
-        <h1>A CIÊNCIA DA <br> <span class="italic-serif">Regeneração</span></h1>
-        <p>Enquanto o mundo tenta esconder o envelhecimento com cosméticos paliativos, nós hackeamos o interruptor biológico. O Protocolo Deep Glow é a única metodologia de engenharia do sono projetada para forçar o pico de GH e colágeno endógeno enquanto sua consciência está offline.</p>
-        <a href="#oferta" class="btn-cta">Ativar meu protocolo exclusivo</a>
+        <span>BIOLOGICAL UPGRADE • LIMITED RELEASE</span>
+        <h1>Wake Up With 10-Year <span class="italic-serif">Younger</span> Looking Skin Using This 5-Minute Nightly Ritual</h1>
+        <p>Master the biological protocol of nocturnal regeneration. A scientific "skin-hack" designed for high-performers who demand peak cellular repair without expensive clinics or invasive procedures.</p>
+        
+        <div style="margin-top: 40px;">
+            <a href="#offer" class="btn-cta">Unlock The Glow Today</a>
+            <span class="microcopy">Secure Checkout • Instant Digital Access</span>
+        </div>
     </header>
 
     <section class="section-padding container">
         <div class="grid-2">
             <div>
-                <span class="label">O Mecanismo</span>
-                <h2>Não é sono. <br>É <span class="gold" style="color:var(--gold)">arquitetura celular.</span></h2>
-                <p style="color: var(--text-dim); margin-top: 25px;">Cremes de R$ 800 não funcionam em um terreno biológico inflamado pelo cortisol noturno. O Deep Glow limpa o campo e ativa a reconstrução da derme de dentro para fora.</p>
+                <span class="label">The Hidden Sabotage</span>
+                <h2>Your $500 Serums are <span style="color:var(--gold)">Useless</span> Without This.</h2>
+                <p style="color: var(--text-dim); margin-top: 25px;">The skincare industry wants you to believe the solution is in a bottle. But if your <strong>Nocturnal Cortisol</strong> is high, your body is physically incapable of producing collagen. You aren't just sleeping; you're aging under the sheets.</p>
             </div>
             <div class="card">
-                <h3>High-Standard</h3>
-                <p>Nós não ensinamos você a dormir mais. Nós ensinamos você a manipular a densidade da regeneração. Uma hora de sono no protocolo vale por quatro de um sono comum.</p>
+                <h3>The Invisible Enemy</h3>
+                <p>Blue light pollution and physiological stress "freeze" your cellular repair. We don't teach you to sleep longer—we teach you to manipulate the <strong>density of your regeneration</strong>.</p>
             </div>
         </div>
     </section>
 
     <section class="section-padding" style="background: var(--surface);">
-        <div class="container text-center" style="text-align:center">
-            <span class="label">O Erro Comum</span>
-            <h2 style="margin-bottom: 40px;">Por que o Skincare tradicional <br> <span style="color: #ff4b2b;">falha</span> sistematicamente?</h2>
+        <div class="container" style="text-align:center">
+            <span class="label">The Unique Mechanism</span>
+            <h2 style="margin-bottom: 40px;">The "Biological Reset" Protocol</h2>
             <div class="grid-2" style="text-align:left">
-                <p>O mercado quer que você acredite que a solução está em um frasco. A verdade? A absorção de qualquer ativo cai 70% se a temperatura e a drenagem linfática noturna não estiverem em sintonia. O Deep Glow é o alicerce sem o qual nada funciona.</p>
-                <p>O Protocolo é um sistema fechado. Ambiente + Estímulo + Biologia. É a diferença entre envelhecer 12 meses por ano, ou resetar o seu relógio genético todas as noites.</p>
+                <p>The Deep Glow Protocol isn't skincare. It's <strong>Biological Architecture</strong>. By aligning your circadian rhythm with specific thermal and hormonal triggers, you force your body to release peak GH (Growth Hormone) precisely when your skin cells begin their mitosis phase.</p>
+                <p>This is the "Golden Window" of repair. Master this, and you bypass years of premature aging in just 21 nights of application.</p>
+            </div>
+            <div style="margin-top: 60px;">
+                <a href="#offer" class="btn-cta">Start My Transformation Now</a>
             </div>
         </div>
     </section>
 
     <section class="section-padding container">
-        <h2 style="text-align:center; margin-bottom: 60px;">O Sistema Integrado</h2>
+        <h2 style="text-align:center; margin-bottom: 60px;">What's Inside The Protocol</h2>
         <div class="grid-2">
             <div class="card">
-                <span class="label">Fase 01</span>
-                <h3>Reset Hormonal</h3>
-                <p>O bloqueio estratégico do cortisol e a maximização da melatonina como antioxidante mestre.</p>
+                <span class="label">Step 01</span>
+                <h3>Hormonal Reset</h3>
+                <p>✔️ <strong>Stop Collagen Decay:</strong> Neutralize cortisol spikes that destroy skin elasticity while you dream.</p>
+                <p>✔️ <strong>Social Impact:</strong> Wake up without the "puffy" exhausted look, appearing sharp and revitalized.</p>
             </div>
             <div class="card">
-                <span class="label">Fase 02</span>
-                <h3>Estrutura Facial</h3>
-                <p>Engenharia de posição e ambiente para eliminar permanentemente as rugas de compressão (Sleep Wrinkles).</p>
+                <span class="label">Step 02</span>
+                <h3>Sleep Architecture</h3>
+                <p>✔️ <strong>Erase Sleep Wrinkles:</strong> Re-engineer your environment to prevent permanent facial compression marks.</p>
+                <p>✔️ <strong>Emotional Impact:</strong> Feel the confidence of knowing your body is healing itself on autopilot.</p>
             </div>
             <div class="card">
-                <span class="label">Fase 03</span>
-                <h3>Despertar Radiante</h3>
-                <p>Aceleração metabólica e contraste térmico para selar o brilho e drenar o inchaço matinal.</p>
+                <span class="label">Step 03</span>
+                <h3>The Radiant Awakening</h3>
+                <p>✔️ <strong>Instant Glow:</strong> Use 3-minute lymphatic activation to drain toxins and seal pores upon waking.</p>
+                <p>✔️ <strong>Visible Transformation:</strong> Achieve that "lit-from-within" look that no foundation can replicate.</p>
             </div>
             <div class="card">
-                <span class="label">Fase 04</span>
-                <h3>Blindagem Digital</h3>
-                <p>Proteção da elastina contra a luz azul e o estresse oxidativo residual.</p>
+                <span class="label">Step 04</span>
+                <h3>Biological Shield</h3>
+                <p>✔️ <strong>Stop Premature Aging:</strong> Build a cellular defense against blue light and environmental oxidative stress.</p>
             </div>
         </div>
     </section>
 
-    <section id="oferta" class="offer-wrapper">
+    <section id="offer" class="offer-wrapper">
         <div class="container">
             <div class="offer-card animate">
-                <div class="offer-badge">⚠️ ÚLTIMA OPORTUNIDADE: ACESSO AO SISTEMA COMPLETO</div>
+                <div class="offer-badge">⚠️ LIMITED TIME: EXCLUSIVE PROMOTIONAL ACCESS ACTIVE</div>
                 <div class="offer-content">
-                    <div class="timer-box" id="countdown">
-                        <div><span class="timer-unit" id="hours">02</span><span class="timer-label">HORAS</span></div>
+                    
+                    <div class="timer-box">
+                        <div><span class="timer-unit">02</span><span class="timer-label">HOURS</span></div>
                         <div class="timer-unit">:</div>
                         <div><span class="timer-unit" id="minutes">00</span><span class="timer-label">MIN</span></div>
                         <div class="timer-unit">:</div>
-                        <div><span class="timer-unit" id="seconds">00</span><span class="timer-label">SEG</span></div>
+                        <div><span class="timer-unit" id="seconds">00</span><span class="timer-label">SEC</span></div>
                     </div>
-                    
-                    <h2 style="font-size: 2.5rem;">Protocolo <br> <span class="gold" style="color:var(--gold)">Deep Glow</span></h2>
-                    
+
+                    <span class="label">The Full System</span>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Deep Glow Protocol</h2>
+                    <span class="price-anchor">Clinics charge $1,200+ for similar results. You get the blueprint for:</span>
+
                     <ul class="bullets">
-                        <li>Regeneração celular noturna de alta performance</li>
-                        <li>Controle estratégico do Cortisol e estresse oxidativo</li>
-                        <li>Estímulo natural otimizado de GH e Melatonina</li>
-                        <li>Arquitetura Facial: Protocolo pré-sono de descompressão</li>
-                        <li>Engenharia do Ambiente: Temperatura e Umidade de cura</li>
-                        <li>Protocolo Anti-Inchaço: Drenagem matinal expressa</li>
-                        <li>Técnica de Hidratação e Contraste Térmico avançado</li>
-                        <li>Blindagem biológica contra o envelhecimento precoce</li>
+                        <li>Biological Nocturnal Regeneration Blueprint</li>
+                        <li>Strategic Cortisol & Hormone Control System</li>
+                        <li>Natural GH & Melatonin Optimization Ritual</li>
+                        <li>Pre-Sleep Facial Architecture & Decompression</li>
+                        <li>Sleep Sanctuary Engineering (Temp/Humidity)</li>
+                        <li>The 3-Minute Morning Anti-Puff Protocol</li>
+                        <li>Thermal Contrast & Shock Hydration Technique</li>
+                        <li>Biological Premature Aging Shield</li>
                     </ul>
 
                     <div style="margin-bottom: 30px;">
-                        <span class="price-old">De R$ 1.497,00</span>
-                        <div class="price-installments">12x de <span style="font-size: 3.5rem; font-weight: 900; color: #fff;">R$ 49,90</span></div>
-                        <p class="price-cash">ou R$ 497 à vista no PIX</p>
+                        <span class="price-old">Regular Price: $497.00</span>
+                        <div class="price-main">$47</div>
+                        <p style="color:var(--text-dim); font-size: 13px;">One-time payment. Lifetime access.</p>
                     </div>
 
-                    <a href="SEU_LINK_CHECKOUT" class="btn-cta" style="width: 100%;">Garantir meu acesso agora</a>
-                    <p style="font-size: 11px; color: var(--text-dim); margin-top: 15px;">🔒 Pagamento 100% criptografado e seguro.</p>
+                    <a href="YOUR_LINK_HERE" class="btn-cta" style="width: 100%;">Get Instant Access Now</a>
+                    <span class="microcopy">100% Risk-Free • Secure Checkout</span>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="section-padding container" style="text-align:center">
+        <div style="max-width: 800px; margin: 0 auto; border: 1px solid var(--border); padding: 60px; border-radius: 8px;">
+            <h2 style="color: var(--gold); margin-bottom: 25px;">The "Radiant Skin" Guarantee</h2>
+            <p style="font-size: 1.1rem; color: var(--text-dim);">Try the Deep Glow Protocol for 14 full days. If you don't wake up feeling more revitalized, or if you don't see a visible difference in your skin's firmness and glow, simply send a one-word email. I will refund every penny of your investment. No questions. No friction. <strong>I take 100% of the risk.</strong></p>
         </div>
     </section>
 
     <section class="faq">
         <div class="container">
-            <h2>Dúvidas Frequentes</h2>
+            <h2>Frequently Asked Questions</h2>
             <div class="faq-grid">
                 <div class="faq-item">
-                    <strong><span class="faq-num">01.</span> Funciona para qualquer idade?</strong>
-                    <p>Sim. A biologia da regeneração celular é universal. Quanto mais madura a pele, mais visíveis são os resultados do reset hormonal.</p>
+                    <strong><span class="faq-num">01.</span> Does this work for any age?</strong>
+                    <p>Yes. Cellular regeneration is a biological constant. Whether you are 25 or 65, the protocol optimizes your existing repair mechanisms.</p>
                 </div>
                 <div class="faq-item">
-                    <strong><span class="faq-num">02.</span> Preciso mudar minha rotina drasticamente?</strong>
-                    <p>Não. O protocolo é sobre pequenos ajustes estratégicos e um ritual de 5 minutos que substitui hábitos que hoje sabotam sua beleza.</p>
+                    <strong><span class="faq-num">02.</span> Do I need expensive products?</strong>
+                    <p>No. This is about biological timing and environment. We suggest accessible actives, but the methodology is what drives the results.</p>
                 </div>
                 <div class="faq-item">
-                    <strong><span class="faq-num">03.</span> Em quanto tempo vejo resultados?</strong>
-                    <p>Nas primeiras 48 horas você sentirá a redução do inchaço matinal. Em 21 dias, a textura e o viço da pele mudam completamente.</p>
+                    <strong><span class="faq-num">03.</span> How soon will I see results?</strong>
+                    <p>You will feel the reduction in inflammation within 48 hours. Visible skin density changes typically occur within 14-21 days.</p>
                 </div>
                 <div class="faq-item">
-                    <strong><span class="faq-num">04.</span> Serve para homens?</strong>
-                    <p>Sim. Embora o foco seja estética e rejuvenescimento, a performance celular e o controle do cortisol beneficiam ambos os sexos.</p>
+                    <strong><span class="faq-num">04.</span> Is it safe?</strong>
+                    <p>100%. This is based on chronobiology and physiology. No invasive needles or aggressive chemicals.</p>
                 </div>
                 <div class="faq-item">
-                    <strong><span class="faq-num">05.</span> Preciso usar produtos caros?</strong>
-                    <p>Absolutamente não. O protocolo foca no que seu corpo produz naturalmente. Sugerimos ativos acessíveis, mas o segredo está no método.</p>
+                    <strong><span class="faq-num">05.</span> How do I receive access?</strong>
+                    <p>Immediately. After checkout, you will receive an email with your unique login to our private member portal.</p>
                 </div>
                 <div class="faq-item">
-                    <strong><span class="faq-num">06.</span> É seguro?</strong>
-                    <p>Totalmente. É baseado em fisiologia humana e cronobiologia. Sem procedimentos invasivos ou químicos agressivos.</p>
+                    <strong><span class="faq-num">06.</span> Is this for men too?</strong>
+                    <p>Absolutely. Cortisol management and nocturnal repair are essential for male skin health and overall performance.</p>
                 </div>
                 <div class="faq-item">
-                    <strong><span class="faq-num">07.</span> Como recebo acesso?</strong>
-                    <p>Imediatamente após a confirmação. Você recebe um login único para nossa plataforma de membros exclusiva.</p>
+                    <strong><span class="faq-num">07.</span> What if I travel?</strong>
+                    <p>The protocol is portable. We teach you how to engineer any environment—from hotels to airplanes—for peak repair.</p>
                 </div>
                 <div class="faq-item">
-                    <strong><span class="faq-num">08.</span> Tem garantia?</strong>
-                    <p>Risco zero. Você tem 7 dias para testar o sistema. Se não sentir que sua pele renasceu, devolvemos 100% do valor.</p>
+                    <strong><span class="faq-num">08.</span> Is my payment secure?</strong>
+                    <p>Yes. We use industry-standard SSL encryption. Your data is 100% protected.</p>
                 </div>
+            </div>
+            <div style="text-align:center; margin-top: 60px;">
+                <a href="#offer" class="btn-cta">I'm Ready. Unlock The Glow.</a>
             </div>
         </div>
     </section>
 
-    <footer class="contact-footer container">
-        <span class="label">Conecte-se com a elite</span>
-        
-        <div class="social-row">
-            <a href="https://instagram.com/theglowprotocoll" class="btn-social">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.282.11-.705.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg>
-                THE GLOW PROTOCOL
-            </a>
-        </div>
-
-        <div class="social-row">
-            <a href="#" class="btn-social" style="border-color: #25D366; color: #25D366;">WhatsApp</a>
-            <a href="#" class="btn-social" style="border-color: #0088cc; color: #0088cc;">Telegram</a>
-            <a href="#" class="btn-social" style="border-color: #006AFF; color: #006AFF;">Messenger</a>
-        </div>
-
-        <p style="font-size: 10px; color: #222; margin-top: 50px; letter-spacing: 2px;">© 2026 DEEP GLOW PROTOCOL. ALL RIGHTS RESERVED.</p>
+    <footer style="padding: 60px 0; text-align: center; border-top: 1px solid var(--border); font-size: 10px; color: #333; letter-spacing: 2px;">
+        © 2026 DEEP GLOW PROTOCOL ® • THE BIOLOGICAL STANDARD. ALL RIGHTS RESERVED.
     </footer>
 
     <script>
-        // Timer 2 Hours
-        function startTimer(duration, display) {
-            let timer = duration, hours, minutes, seconds;
-            setInterval(function () {
-                hours = parseInt(timer / 3600, 10);
-                minutes = parseInt((timer % 3600) / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-
-                hours = hours < 10 ? "0" + hours : hours;
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                document.getElementById('hours').textContent = hours;
-                document.getElementById('minutes').textContent = minutes;
-                document.getElementById('seconds').textContent = seconds;
-
-                if (--timer < 0) {
-                    timer = duration;
-                }
-            }, 1000);
-        }
-
-        window.onload = function () {
-            let twoHours = 60 * 60 * 2;
-            startTimer(twoHours);
-        };
+        // Simple Timer for urgency (2 hours)
+        let timer = 120 * 60;
+        setInterval(() => {
+            let mins = Math.floor(timer / 60);
+            let secs = timer % 60;
+            document.getElementById('minutes').innerHTML = mins < 10 ? '0' + mins : mins;
+            document.getElementById('seconds').innerHTML = secs < 10 ? '0' + secs : secs;
+            if (timer > 0) timer--;
+        }, 1000);
     </script>
 </body>
 </html>
