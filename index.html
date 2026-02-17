@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Deep Glow | 5-Day Reset Protocol</title>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -14,287 +14,256 @@
             --gold-light: #e0c9ac;
             --green: #2ecc71;
             --text: #ffffff;
-            --text-dim: #888888;
+            --text-dim: #999999;
             --border: #1a1a1a;
-            --transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            /* Responsive Scale */
+            --h1: clamp(2.25rem, 6vw, 4.5rem);
+            --h2: clamp(1.75rem, 4vw, 2.75rem);
+            --body: clamp(1rem, 1.1vw, 1.125rem);
         }
 
-        /* Reset & Base */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
         body { 
             font-family: 'Inter', sans-serif; 
             background: var(--bg); 
             color: var(--text); 
-            overflow-x: hidden; 
-            line-height: 1.5; 
-            letter-spacing: 0.01em;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; position: relative; }
-        h1, h2, h3 { font-family: 'Archivo', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.1; }
-        .italic-serif { font-family: 'Playfair Display', serif; font-style: italic; text-transform: none; letter-spacing: 0; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
         
-        .label { color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        /* Typography System */
+        h1, h2, h3 { font-family: 'Archivo', sans-serif; text-transform: uppercase; letter-spacing: -0.03em; line-height: 1; }
+        .italic-serif { font-family: 'Playfair Display', serif; font-style: italic; text-transform: none; letter-spacing: -0.01em; }
+        .label { color: var(--gold); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1rem; display: block; }
 
-        /* Animations */
-        @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); } 70% { transform: scale(1.02); box-shadow: 0 0 0 15px rgba(46, 204, 113, 0); } 100% { transform: scale(1); } }
-        @keyframes shine { from { left: -100%; } to { left: 100%; } }
+        /* Utility Components */
+        .section-padding { padding: clamp(4rem, 8vw, 7rem) 0; }
+        .glass-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; transition: var(--transition); }
+        .glass-card:hover { border-color: var(--gold); }
 
-        /* Hero */
-        .hero { padding: 100px 0 60px; text-align: center; }
-        .hero h1 { font-size: clamp(2.2rem, 6vw, 4.5rem); margin-bottom: 25px; }
-        .hero p { max-width: 700px; margin: 0 auto 40px; font-size: 1.2rem; color: var(--text-dim); font-weight: 300; }
+        /* Hero Refined */
+        .hero { padding: clamp(5rem, 10vw, 9rem) 0 clamp(3rem, 6vw, 5rem); text-align: center; }
+        .hero h1 { font-size: var(--h1); margin-bottom: 1.5rem; max-width: 900px; margin-inline: auto; }
+        .hero p { max-width: 650px; margin: 0 auto 2.5rem; font-size: var(--body); color: var(--text-dim); font-weight: 300; }
 
-        /* Buttons */
+        /* Button - Direct Response Style */
         .btn-cta {
-            position: relative; display: inline-block; background: var(--green); color: #000;
-            padding: 20px 45px; font-size: 1.1rem; font-weight: 900; text-transform: uppercase;
-            text-decoration: none; border-radius: 4px; overflow: hidden; transition: var(--transition);
-            animation: pulse 2s infinite; text-align: center;
+            position: relative; display: inline-flex; align-items: center; justify-content: center;
+            background: var(--green); color: #000; padding: 1.25rem 3rem; font-size: 1rem;
+            font-weight: 900; text-transform: uppercase; text-decoration: none; border-radius: 4px;
+            transition: var(--transition); overflow: hidden; animation: pulse 2s infinite;
         }
-        .btn-cta:hover { transform: scale(1.03); background: #27ae60; }
-        .btn-cta::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shine 3s infinite; }
-        .microcopy { display: block; margin-top: 12px; font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; }
+        .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(46, 204, 113, 0.3); }
+        .microcopy { display: block; margin-top: 1rem; font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em; }
 
-        /* Pain Section */
-        .section-padding { padding: 80px 0; }
-        .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .pain-list { list-style: none; margin-top: 20px; }
-        .pain-list li { margin-bottom: 15px; color: var(--text-dim); display: flex; align-items: flex-start; gap: 10px; font-size: 1.1rem; }
-        .pain-list li span { color: #e74c3c; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(46, 204, 113, 0); } 100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); } }
 
-        /* 5-Day Roadmap */
-        .roadmap-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-top: 40px; }
-        .roadmap-card { background: var(--surface); border: 1px solid var(--border); padding: 25px 15px; border-radius: 4px; text-align: center; transition: var(--transition); }
-        .roadmap-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .roadmap-card .day { display: block; color: var(--gold); font-weight: 900; font-size: 12px; margin-bottom: 10px; }
-        .roadmap-card h4 { font-family: 'Archivo'; font-size: 0.9rem; text-transform: uppercase; line-height: 1.2; }
+        /* Problem Section Layout */
+        .problem-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; }
+        .pain-item { display: flex; gap: 1rem; margin-bottom: 1.25rem; color: var(--text-dim); font-size: 1rem; }
+        .pain-item b { color: var(--text); }
+        .pain-icon { color: #ff4d4d; font-weight: bold; }
 
-        /* Offer Card */
-        .offer-wrapper { background: radial-gradient(circle at center, #111 0%, #050505 100%); padding: 80px 0; border-top: 1px solid var(--border); }
-        .offer-card { max-width: 600px; margin: 0 auto; background: #000; border: 1px solid var(--gold); border-radius: 8px; overflow: hidden; }
-        .offer-badge { background: var(--gold); color: #000; padding: 12px; font-weight: 900; font-size: 11px; text-align: center; text-transform: uppercase; }
-        .offer-content { padding: 40px 30px; text-align: center; }
+        /* 5-Day Visual Roadmap */
+        .roadmap { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-top: 3rem; }
+        .step { padding: 1.5rem; text-align: center; position: relative; }
+        .step-num { font-size: 0.7rem; color: var(--gold); font-weight: 900; display: block; margin-bottom: 0.5rem; opacity: 0.6; }
+        .step h4 { font-size: 0.85rem; letter-spacing: 0.05em; }
+
+        /* Offer Block - High Value Perception */
+        .offer-section { background: #000; border: 1px solid var(--gold); border-radius: 12px; overflow: hidden; max-width: 800px; margin: 0 auto; }
+        .offer-header { background: var(--gold); color: #000; padding: 0.75rem; text-align: center; font-weight: 900; font-size: 0.75rem; text-transform: uppercase; }
+        .offer-body { padding: 3rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: left; }
         
-        .timer-box { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
-        .timer-unit { color: var(--gold); font-family: 'Archivo'; font-size: 2rem; font-weight: 900; line-height: 1; }
-        .timer-label { font-size: 9px; color: var(--text-dim); text-transform: uppercase; margin-top: 4px; }
+        .timer-display { display: flex; gap: 1rem; margin-bottom: 1.5rem; justify-content: flex-start; }
+        .timer-unit { font-family: 'Archivo'; font-size: 1.5rem; color: var(--gold); }
+        .timer-label { font-size: 0.6rem; text-transform: uppercase; color: var(--text-dim); display: block; }
 
-        .price-main { font-size: 5rem; font-weight: 900; color: var(--text); line-height: 1; margin: 10px 0; letter-spacing: -3px; }
-        .price-old { text-decoration: line-through; color: var(--text-dim); font-size: 1.2rem; }
+        .price-stack { margin: 1.5rem 0; }
+        .old-price { text-decoration: line-through; color: var(--text-dim); font-size: 1rem; }
+        .new-price { font-size: 4rem; font-family: 'Archivo'; font-weight: 900; color: #fff; line-height: 1; margin-top: 0.25rem; }
 
-        .bullets { list-style: none; text-align: left; margin: 30px 0; border-top: 1px solid #111; padding-top: 20px; }
-        .bullets li { padding: 8px 0; font-size: 0.9rem; color: var(--text-dim); display: flex; align-items: center; gap: 12px; }
-        .bullets li::before { content: '→'; color: var(--gold); font-weight: bold; }
+        .system-list { list-style: none; }
+        .system-list li { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0.75rem; display: flex; gap: 0.75rem; }
+        .system-list li::before { content: "✓"; color: var(--green); font-weight: bold; }
 
         /* FAQ */
-        .faq { background: #fff; color: #000; padding: 80px 0; }
-        .faq h2 { text-align: center; margin-bottom: 40px; color: #000; }
-        .faq-item { border-bottom: 1px solid #eee; max-width: 700px; margin: 0 auto; }
-        .faq-question { width: 100%; padding: 20px 0; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; font-size: 1rem; font-weight: 800; text-transform: uppercase; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: #555; font-size: 0.9rem; }
-        .faq-answer p { padding-bottom: 20px; }
-        .active + .faq-answer { max-height: 200px; }
+        .faq-box { max-width: 700px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--border); }
+        .faq-trigger { width: 100%; padding: 1.5rem 0; background: none; border: none; color: #fff; text-align: left; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; cursor: pointer; display: flex; justify-content: space-between; }
+        .faq-content { max-height: 0; overflow: hidden; transition: 0.3s; color: var(--text-dim); font-size: 0.9rem; }
 
-        footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border); font-size: 10px; color: #333; letter-spacing: 2px; }
-
-        /* Mobile Refinement */
+        /* Mobile Refinement Styles */
         @media (max-width: 768px) {
-            .section-padding { padding: 50px 0; }
-            .hero { padding: 70px 0 40px; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1.05rem; }
+            .section-padding { padding: 3.5rem 0; }
+            .hero { padding-top: 5rem; }
+            .problem-grid { grid-template-columns: 1fr; gap: 2.5rem; }
             
-            .pain-grid { grid-template-columns: 1fr; gap: 30px; }
-            
-            .roadmap-grid { grid-template-columns: 1fr; gap: 10px; }
-            .roadmap-card { display: flex; align-items: center; gap: 20px; padding: 15px; text-align: left; }
-            .roadmap-card .day { margin-bottom: 0; min-width: 50px; }
-            
-            .price-main { font-size: 4rem; }
-            .offer-content { padding: 30px 20px; }
-            .btn-cta { width: 100%; padding: 18px; font-size: 1rem; }
+            .roadmap { grid-template-columns: 1fr; gap: 0.5rem; }
+            .step { display: flex; align-items: center; text-align: left; gap: 1rem; padding: 1rem; }
+            .step-num { margin-bottom: 0; min-width: 45px; }
 
-            .faq h2 { font-size: 1.8rem; }
+            .offer-body { grid-template-columns: 1fr; padding: 2rem 1.5rem; text-align: center; }
+            .timer-display { justify-content: center; }
+            .new-price { font-size: 3.5rem; }
+            .system-list { text-align: left; display: inline-block; }
+            .btn-cta { width: 100%; padding: 1.1rem; font-size: 0.9rem; }
         }
+
+        footer { padding: 3rem 0; text-align: center; font-size: 0.65rem; color: #333; letter-spacing: 0.2em; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
 
-    <header class="hero container">
-        <span class="label">Emergency Skin Rescue</span>
-        <h1>Reboot Your Skin’s <span class="italic-serif">Biological</span> Clock in 5 Nights.</h1>
-        <p>The 5-Day Reset is a focused, high-speed protocol to neutralize "Sleep-Stress" and flush out nocturnal inflammation without expensive 10-step routines.</p>
-        
-        <div style="margin-top: 20px;">
-            <a href="#offer" class="btn-cta">Start My 5-Day Reset Today</a>
-            <span class="microcopy">Instant Access • Secure $7.90 Checkout</span>
-        </div>
+    <section class="hero container">
+        <span class="label">Biological Protocol • 5-Night Reset</span>
+        <h1>Reset Your <span class="italic-serif">Skin's Age</span> While You Sleep.</h1>
+        <p>A precision-engineered 5-day protocol to neutralize nocturnal cortisol and reboot your body's natural cellular regeneration cycle.</p>
+        <a href="#offer" class="btn-cta">Start Your Reset Now</a>
+        <span class="microcopy">Instant Access • Secure Checkout</span>
     </header>
 
-    <section class="section-padding container" style="border-top: 1px solid var(--border);">
-        <div class="pain-grid">
+    <section class="section-padding container">
+        <div class="problem-grid">
             <div>
-                <span class="label">The Problem</span>
-                <h2>Exhaustion Is <span style="color:var(--gold)">Oxidizing</span> Your Face.</h2>
-                <p style="color: var(--text-dim); margin-top: 20px;">You aren't just tired. Your body is stuck in a "Cortisol Loop" that freezes cellular repair. If you wake up with:</p>
-                <ul class="pain-list">
-                    <li><span>✕</span> Persistent under-eye puffiness</li>
-                    <li><span>✕</span> Dehydrated, "paper-thin" skin texture</li>
-                    <li><span>✕</span> Dull tone that even caffeine can't fix</li>
-                    <li><span>✕</span> Chronic nocturnal stress signs</li>
-                </ul>
+                <span class="label">The Diagnosis</span>
+                <h2 style="margin-bottom: 1.5rem;">Why You Look <span style="color:var(--gold)">Exhausted</span> (Even After 8h of Sleep)</h2>
+                <div class="pain-item">
+                    <span class="pain-icon">✕</span>
+                    <span><b>Toxic Cortisol Spikes:</b> Your body is fighting stress instead of building collagen at 3 AM.</span>
+                </div>
+                <div class="pain-item">
+                    <span class="pain-icon">✕</span>
+                    <span><b>Stagnant Lymphatics:</b> Why you wake up with "morning puffiness" and dark circles.</span>
+                </div>
+                <div class="pain-item">
+                    <span class="pain-icon">✕</span>
+                    <span><b>Cellular Dehydration:</b> Your $200 serums can't penetrate a stressed skin barrier.</span>
+                </div>
             </div>
-            <div style="background: var(--surface); padding: 40px; border-radius: 8px; border: 1px dashed var(--gold);">
-                <h3 style="color: var(--gold); margin-bottom: 15px;">The 5-Day Science</h3>
-                <p style="font-size: 0.95rem; color: var(--text-dim);">The Reset focuses on <strong>Autophagy</strong>—your body's natural "trash collection" system. By manipulating specific environmental triggers for 5 nights, we force your cells to purge oxidative waste and restart collagen production.</p>
+            <div class="glass-card" style="padding: 2.5rem; border-style: dashed;">
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--gold);">The Solution</h3>
+                <p style="font-size: 0.9rem; color: var(--text-dim);">The 5-Day Reset isn't a "routine"—it's a <b>biological override</b>. We use thermal triggers and circadian alignment to force your body into Deep Regeneration Mode.</p>
             </div>
         </div>
     </section>
 
     <section class="section-padding" style="background: var(--surface);">
         <div class="container" style="text-align: center;">
-            <span class="label">The Transformation Timeline</span>
-            <h2 style="margin-bottom: 10px;">The 5-Night Trajectory</h2>
-            <p style="color: var(--text-dim); margin-bottom: 40px;">Practical. Logical. No fluff.</p>
-            
-            <div class="roadmap-grid">
-                <div class="roadmap-card">
-                    <span class="day">DAY 01</span>
-                    <h4>Inflammation Flush</h4>
+            <span class="label">The Protocol</span>
+            <h2>The 5-Night Roadmap</h2>
+            <div class="roadmap">
+                <div class="glass-card step">
+                    <span class="step-num">01</span>
+                    <h4>De-Bloat Phase</h4>
                 </div>
-                <div class="roadmap-card">
-                    <span class="day">DAY 02</span>
-                    <h4>Cortisol Stability</h4>
+                <div class="glass-card step">
+                    <span class="step-num">02</span>
+                    <h4>Hormone Sync</h4>
                 </div>
-                <div class="roadmap-card">
-                    <span class="day">DAY 03</span>
-                    <h4>Micro-Circulation</h4>
+                <div class="glass-card step">
+                    <span class="step-num">03</span>
+                    <h4>Collagen Boost</h4>
                 </div>
-                <div class="roadmap-card">
-                    <span class="day">DAY 04</span>
-                    <h4>Glow Activation</h4>
+                <div class="glass-card step">
+                    <span class="step-num">04</span>
+                    <h4>Dermal Repair</h4>
                 </div>
-                <div class="roadmap-card">
-                    <span class="day">DAY 05</span>
-                    <h4>Visible Firmness</h4>
+                <div class="glass-card step">
+                    <span class="step-num">05</span>
+                    <h4>The Deep Glow</h4>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="offer" class="offer-wrapper">
-        <div class="container">
-            <div class="offer-card">
-                <div class="offer-badge">Flash Offer: 85% OFF ENDS SOON</div>
-                <div class="offer-content">
-                    
-                    <div class="timer-box">
-                        <div>
-                            <span class="timer-unit" id="h">02</span>
-                            <div class="timer-label">Hours</div>
-                        </div>
-                        <span class="timer-unit" style="opacity: 0.5;">:</span>
-                        <div>
-                            <span class="timer-unit" id="m">00</span>
-                            <div class="timer-label">Min</div>
-                        </div>
-                        <span class="timer-unit" style="opacity: 0.5;">:</span>
-                        <div>
-                            <span class="timer-unit" id="s">00</span>
-                            <div class="timer-label">Sec</div>
-                        </div>
+    <section id="offer" class="section-padding container" style="text-align: center;">
+        <div class="offer-section">
+            <div class="offer-header">⚠️ Flash Offer: 85% Discount Active</div>
+            <div class="offer-body">
+                <div>
+                    <div class="timer-display" id="timer">
+                        <div><span class="timer-unit" id="h">02</span><span class="timer-label">Hours</span></div>
+                        <span class="timer-unit">:</span>
+                        <div><span class="timer-unit" id="m">00</span><span class="timer-label">Min</span></div>
+                        <span class="timer-unit">:</span>
+                        <div><span class="timer-unit" id="s">00</span><span class="timer-label">Sec</span></div>
                     </div>
-
-                    <span class="label">Introductory Access</span>
-                    <h2 style="font-size: 2rem; margin-bottom: 10px;">Deep Glow 5-Day Reset</h2>
-                    
-                    <ul class="bullets">
-                        <li>The 5-Night Cellular Flush Protocol</li>
-                        <li>Nocturnal Cortisol Management Guide</li>
-                        <li>The "Instant Awakening" Morning Ritual</li>
-                        <li>Environmental Sleep Bio-Hacks</li>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Deep Glow Reset™</h3>
+                    <ul class="system-list">
+                        <li>Nocturnal Regeneration Blueprint</li>
+                        <li>Cortisol-Control Ritual</li>
+                        <li>Circadian Environment Setup</li>
+                        <li>Morning Activation Guide</li>
                     </ul>
-
-                    <div style="margin-bottom: 25px;">
-                        <span class="price-old">Regular Price: $49.00</span>
-                        <div class="price-main">$7.90</div>
-                        <p style="color:var(--text-dim); font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">One-Time Payment • Instant Digital Delivery</p>
+                </div>
+                <div style="border-left: 1px solid var(--border); padding-left: 2rem;" class="mobile-no-border">
+                    <div class="price-stack">
+                        <span class="old-price">Regularly $49.00</span>
+                        <div class="new-price">$7.90</div>
                     </div>
-
-                    <a href="#" class="btn-cta" style="width: 100%;">Get The Reset For $7.90</a>
-                    <span class="microcopy">SSL Secured Checkout • Lifetime Access</span>
+                    <a href="#" class="btn-cta">Unlock Everything</a>
+                    <p style="font-size: 0.6rem; color: var(--text-dim); margin-top: 1rem;">ONE-TIME PAYMENT • LIFETIME ACCESS</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section-padding container" style="text-align: center;">
-        <div style="max-width: 600px; margin: 0 auto; opacity: 0.8;">
-            <h3 style="margin-bottom: 15px;">7-Day No-Questions Guarantee</h3>
-            <p style="font-size: 0.9rem; color: var(--text-dim);">If you don't feel a difference in your skin's vitality after night 5, we will refund your $7.90 immediately. We take the risk so you can experience the glow.</p>
-        </div>
-    </section>
-
-    <section class="faq">
-        <div class="container">
-            <h2>FAQ</h2>
+    <section class="section-padding container">
+        <div class="faq-box">
+            <h2 style="text-align: center; margin-bottom: 2rem; font-size: 1.5rem;">Questions?</h2>
             <div class="faq-item">
-                <button class="faq-question">Is this a physical product? <span>+</span></button>
-                <div class="faq-answer"><p>No, this is a digital protocol. You get immediate access to the 5-Day Reset guide and rituals so you can start tonight.</p></div>
+                <button class="faq-trigger" onclick="toggleFaq(this)">How soon will I see results? <span>+</span></button>
+                <div class="faq-content"><p>You will notice a reduction in morning puffiness by Day 2. By Day 5, your skin's texture and natural "glow" will be visibly restored.</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">What if I have sensitive skin? <span>+</span></button>
-                <div class="faq-answer"><p>This protocol is biological, not chemical. It focuses on your body's internal repair mechanisms, making it safe for all skin types.</p></div>
+                <button class="faq-trigger" onclick="toggleFaq(this)">Do I need to buy products? <span>+</span></button>
+                <div class="faq-content"><p>No. This protocol relies on biological triggers like timing, temperature, and specific movements. No extra serums required.</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">Do I need new supplements? <span>+</span></button>
-                <div class="faq-answer"><p>No. We focus on temperature, timing, and specific movements. Any optional items are easily found at any grocery store.</p></div>
+                <button class="faq-trigger" onclick="toggleFaq(this)">Is it a subscription? <span>+</span></button>
+                <div class="faq-content"><p>No. This is a one-time investment of $7.90 for lifetime digital access to the protocol.</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">Why only $7.90? <span>+</span></button>
-                <div class="faq-answer"><p>This is a "discovery offer." We want you to experience a win in 5 days so you'll consider our full Deep Glow Protocol later.</p></div>
+                <button class="faq-trigger" onclick="toggleFaq(this)">What if it doesn't work? <span>+</span></button>
+                <div class="faq-content"><p>We offer a 7-day money-back guarantee. If you don't feel a difference, we refund your $7.90 immediately.</p></div>
             </div>
         </div>
     </section>
 
     <footer>
-        © 2026 DEEP GLOW ® • 5-DAY RESET • ALL RIGHTS RESERVED.
+        © 2026 DEEP GLOW PROTOCOL • THE BIOLOGICAL STANDARD
     </footer>
 
     <script>
-        // 2-Hour Timer Logic
+        // Timer Logic
         function startTimer(duration) {
-            let timer = duration;
-            const h = document.getElementById('h');
-            const m = document.getElementById('m');
-            const s = document.getElementById('s');
+            let timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
 
-            setInterval(() => {
-                let hours = Math.floor(timer / 3600);
-                let minutes = Math.floor((timer % 3600) / 60);
-                let seconds = Math.floor(timer % 60);
-
-                h.textContent = hours < 10 ? "0" + hours : hours;
-                m.textContent = minutes < 10 ? "0" + minutes : minutes;
-                s.textContent = seconds < 10 ? "0" + seconds : seconds;
+                document.getElementById('h').textContent = hours < 10 ? "0" + hours : hours;
+                document.getElementById('m').textContent = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById('s').textContent = seconds < 10 ? "0" + seconds : seconds;
 
                 if (--timer < 0) timer = duration;
             }, 1000);
         }
 
         // FAQ Toggle
-        document.querySelectorAll('.faq-question').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const parent = btn.parentElement;
-                const isOpen = btn.classList.contains('active');
-                document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
-                if (!isOpen) btn.classList.add('active');
-            });
-        });
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const isOpen = content.style.maxHeight;
+            document.querySelectorAll('.faq-content').forEach(c => c.style.maxHeight = null);
+            content.style.maxHeight = isOpen ? null : content.scrollHeight + "px";
+        }
 
-        window.onload = () => startTimer(7200);
+        window.onload = function () { startTimer(7200); };
     </script>
 </body>
 </html>
