@@ -10,21 +10,14 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Ajustes específicos para manter o tema DARK desta página específica dentro do style.css */
-        body { background: #050505; color: #ffffff; }
-        .hero h1 { color: #ffffff; }
-        .hero p { color: #888; }
-        .card { background: #0a0a0a; border: 1px solid #1a1a1a; }
-        .card h3 { color: #c5a47e; }
-        .card p { color: #888; }
-        .label { color: #c5a47e; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; }
+        /* Elementos Específicos do Protocol.html que não estão no style.css global */
         
-        /* Language Selector Estilizado */
+        /* Language Selector */
         .lang-selector { position: absolute; top: 20px; right: 20px; z-index: 1000; }
         .lang-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid #1a1a1a;
-            color: #fff;
+            background: rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
             padding: 8px 16px;
             font-size: 12px;
             font-weight: 600;
@@ -33,42 +26,56 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            transition: 0.3s;
         }
         .lang-dropdown {
-            position: absolute; top: 100%; right: 0; background: #0a0a0a;
-            border: 1px solid #1a1a1a; border-radius: 4px; margin-top: 8px;
-            display: none; flex-direction: column; min-width: 140px;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-top: 8px;
+            display: none;
+            flex-direction: column;
+            min-width: 140px;
+            box-shadow: var(--shadow);
         }
         .lang-dropdown.active { display: flex; }
-        .lang-dropdown a { padding: 12px 16px; color: #888; text-decoration: none; font-size: 13px; }
-        .lang-dropdown a:hover { background: #111; color: #c5a47e; }
+        .lang-dropdown a { padding: 12px 16px; color: var(--text-light); text-decoration: none; font-size: 13px; transition: 0.2s; }
+        .lang-dropdown a:hover { background: var(--accent-soft); color: var(--primary-color); }
 
         /* Floating Social Buttons */
         .floating-social { position: fixed; bottom: 30px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 9999; }
-        .social-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s; }
+        .social-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.3s; }
+        .social-btn:hover { transform: scale(1.1) translateY(-5px); }
         .instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
         .whatsapp { background: #25D366; }
         .telegram { background: #0088cc; }
         .social-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
-        /* Offer Specifics */
-        .offer-card { border: 1px solid #c5a47e; background: #000; }
-        .price-main { font-size: 4.5rem; font-weight: 900; color: #fff; line-height: 1; margin: 15px 0; letter-spacing: -2px; text-align: center; }
-        .price-old { text-decoration: line-through; color: #888; font-size: 1.1rem; text-align: center; display: block; }
-        .bullets { list-style: none; padding: 0; margin: 30px 0; }
-        .bullets li { padding: 12px 0; color: #888; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #111; }
-        .bullets li::before { content: '✓'; color: #c5a47e; font-weight: bold; }
+        /* Grid Layout específico para este HTML */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: stretch; margin-top: 40px; }
         
-        /* FAQ Interatividade */
-        .faq-question { width: 100%; background: none; border: none; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Archivo'; font-weight: 700; border-bottom: 1px solid #eee; text-align: left;}
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-        .faq-answer p { padding: 20px 0; color: #555; margin: 0; }
-        .faq-item.active .faq-answer { max-height: 500px; }
+        /* Bullets customizados */
+        .bullets { list-style: none; text-align: left; margin: 30px 0; padding: 0; }
+        .bullets li { padding: 12px 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; color: var(--text-light); display: flex; align-items: center; gap: 12px; }
+        .bullets li::before { content: '✓'; color: var(--primary-color); font-weight: bold; }
+
+        .price-old { text-decoration: line-through; color: var(--text-light); font-size: 1.1rem; }
+        .price-main { font-size: 4rem; font-weight: 900; color: var(--text-main); line-height: 1; margin: 10px 0; letter-spacing: -2px; }
+
+        /* FAQ Estilo Accordion */
+        .faq-item { border-bottom: 1px solid var(--border-color); }
+        .faq-question {
+            width: 100%; padding: 20px 0; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; font-size: 1.1rem; font-weight: 700; color: var(--text-main);
+        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: var(--text-light); }
+        .active + .faq-answer { max-height: 500px; }
 
         @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
             .price-main { font-size: 3rem; }
-            .floating-social { right: 15px; bottom: 15px; }
-            .social-btn { width: 42px; height: 42px; }
         }
     </style>
 </head>
@@ -83,33 +90,67 @@
             <a href="#">English</a>
             <a href="#">Portuguese</a>
             <a href="#">Spanish</a>
+            <a href="#">French</a>
+            <a href="#">German</a>
         </div>
     </div>
 
-    <header class="section hero">
+    <header class="section text-center">
         <div class="container">
-            <span class="label">Biological Upgrade • Limited Release</span>
+            <span style="color: var(--primary-color); letter-spacing: 3px; font-weight: 700; font-size: 13px; text-transform: uppercase;">Biological Upgrade • Limited Release</span>
             <h1>Wake Up With 10-Year <span class="serif">Younger</span> Looking Skin Using This 5-Minute Nightly Ritual</h1>
-            <p>Master the biological protocol of nocturnal regeneration. A scientific "skin-hack" designed for high-performers who demand peak cellular repair.</p>
+            <p>Master the biological protocol of nocturnal regeneration. A scientific "skin-hack" designed for high-performers who demand peak cellular repair without expensive clinics or invasive procedures.</p>
             
             <div class="cta-container">
                 <a href="#offer" class="cta cta-pulse">Unlock The Glow Today</a>
-                <span style="display: block; margin-top: 15px; font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 2px;">Secure Checkout • Instant Digital Access</span>
+                <span style="display: block; margin-top: 15px; font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 2px;">Secure Checkout • Instant Digital Access</span>
             </div>
         </div>
     </header>
 
     <section class="section">
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center;">
+            <div class="grid-2">
                 <div>
-                    <span class="label">The Hidden Sabotage</span>
-                    <h2>Your $500 Serums are <span style="color:#c5a47e">Useless</span> Without This.</h2>
+                    <span style="color: var(--primary-color); font-weight: 700; text-transform: uppercase; font-size: 12px;">The Hidden Sabotage</span>
+                    <h2>Your $500 Serums are <span style="color: var(--primary-color)">Useless</span> Without This.</h2>
                     <p>The skincare industry wants you to believe the solution is in a bottle. But if your <strong>Nocturnal Cortisol</strong> is high, your body is physically incapable of producing collagen.</p>
                 </div>
-                <div class="card">
-                    <h3>The Invisible Enemy</h3>
-                    <p>Blue light pollution and physiological stress "freeze" your cellular repair. We teach you to manipulate the <strong>density of your regeneration</strong>.</p>
+                <div class="box">
+                    <h3 style="text-align: left; font-size: 1.5rem;">The Invisible Enemy</h3>
+                    <p style="margin: 0;">Blue light pollution and physiological stress "freeze" your cellular repair. We teach you to manipulate the <strong>density of your regeneration</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section highlight">
+        <div class="container text-center">
+            <span style="font-weight: 700; text-transform: uppercase; font-size: 12px;">The Unique Mechanism</span>
+            <h2 style="margin-bottom: 30px;">The "Biological Reset" Protocol</h2>
+            <div class="grid-2" style="text-align: left;">
+                <p>The Deep Glow Protocol isn't skincare. It's <strong>Biological Architecture</strong>. By aligning your circadian rhythm with specific triggers, you force your body to release peak GH (Growth Hormone).</p>
+                <p>This is the "Golden Window" of repair. Master this, and you bypass years of premature aging in just 21 nights of application.</p>
+            </div>
+            <div class="cta-container">
+                <a href="#offer" class="cta">Start My Transformation Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center">What's Inside The Protocol</h2>
+            <div class="grid-2">
+                <div class="box">
+                    <span style="color: var(--primary-color); font-weight: 800;">STEP 01</span>
+                    <h3>Hormonal Reset</h3>
+                    <p>Stop Collagen Decay and wake up without the "puffy" exhausted look.</p>
+                </div>
+                <div class="box">
+                    <span style="color: var(--primary-color); font-weight: 800;">STEP 02</span>
+                    <h3>Facial Architecture</h3>
+                    <p>Re-engineer your environment to prevent facial compression marks and sleep wrinkles.</p>
                 </div>
             </div>
         </div>
@@ -117,72 +158,84 @@
 
     <section id="offer" class="section highlight">
         <div class="container">
-            <div class="box offer-card">
-                <div style="background: #c5a47e; color: #000; padding: 10px; text-align: center; font-weight: 900; font-size: 12px; margin: -40px -40px 30px -40px; border-radius: 12px 12px 0 0;">
-                    ⚠️ LIMITED TIME: EXCLUSIVE PROMOTIONAL ACCESS ACTIVE
-                </div>
-                <div class="text-center">
-                    <span class="label">The Full System</span>
-                    <h2 style="margin-bottom: 10px;">Deep Glow Protocol</h2>
-                    <p style="font-size: 0.9rem;">Clinics charge $1,200+ for similar results. You get the blueprint for:</p>
-                </div>
+            <div class="box text-center" style="max-width: 650px; border: 2px solid var(--primary-color);">
+                <div style="background: var(--primary-color); color: white; padding: 10px; margin: -40px -40px 30px -40px; border-radius: 12px 12px 0 0; font-weight: 900; font-size: 12px;">⚠️ LIMITED TIME PROMOTIONAL ACCESS</div>
+                
+                <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Deep Glow Protocol</h2>
+                <p style="font-size: 0.9rem;">Clinics charge $1,200+ for similar results. You get the blueprint for:</p>
 
                 <ul class="bullets">
-                    <li>Biological Nocturnal Regeneration Blueprint</li>
                     <li>Strategic Cortisol & Hormone Control System</li>
-                    <li>Natural GH & Melatonin Optimization Ritual</li>
+                    <li>Pre-Sleep Facial Architecture & Decompression</li>
                     <li>The 3-Minute Morning Anti-Puff Protocol</li>
+                    <li>Biological Premature Aging Shield</li>
                 </ul>
 
-                <div class="text-center">
+                <div style="margin-bottom: 25px;">
                     <span class="price-old">Regular Price: $98.90</span>
                     <div class="price-main">$47.90</div>
                     <p style="font-size: 13px;">One-time payment. Lifetime access.</p>
                 </div>
 
-                <div class="cta-container">
-                    <a href="#" class="cta" style="width: 100%;">Get Instant Access Now</a>
-                    <a href="https://nananmz.github.io/The-Glow-Protocol/optimization" class="cta-secondary">No thanks, I don’t want this upgrade</a>
-                </div>
+                <a href="#" class="cta" style="width: 100%;">Get Instant Access Now</a>
+                <a href="#" class="cta-secondary">No thanks, I don’t want this upgrade</a>
             </div>
         </div>
     </section>
 
-    <section class="section" style="background: #fff; color: #000;">
-        <div class="container">
-            <h2 style="color: #000;">Frequently Asked Questions</h2>
-            <div style="max-width: 800px; margin: 40px auto 0;">
-                <div class="faq-item">
-                    <button class="faq-question">Does this work for any age? <span>+</span></button>
-                    <div class="faq-answer"><p>Yes. Cellular regeneration is a biological constant. Whether you are 25 or 65, the protocol optimizes your existing repair mechanisms.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">Do I need expensive products? <span>+</span></button>
-                    <div class="faq-answer"><p>No. This is about biological timing and environment. We suggest accessible actives, but the methodology drives the results.</p></div>
-                </div>
+    <section class="section">
+        <div class="container text-center">
+            <div class="box" style="border-style: dashed; background: var(--accent-soft);">
+                <h2 style="color: var(--primary-color);">The "Radiant Skin" Guarantee</h2>
+                <p>Try the Protocol for 14 days. If you don't see a visible difference in firmness and glow, I will refund every penny. <strong>I take 100% of the risk.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container">
+        <h2 class="text-center">Frequently Asked Questions</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+                <button class="faq-question">01. Does this work for any age? <span>+</span></button>
+                <div class="faq-answer"><p>Yes. Cellular regeneration is a biological constant. Whether you are 25 or 65, the protocol optimizes your repair mechanisms.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">02. Do I need expensive products? <span>+</span></button>
+                <div class="faq-answer"><p>No. This is about biological timing and environment, not the price tag of your creams.</p></div>
             </div>
         </div>
     </section>
 
     <div class="floating-social">
-        <a href="https://instagram.com/theglowprotocoll" target="_blank" class="social-btn instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.848 0-3.204.012-3.584.07-4.849.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-        <a href="#" class="social-btn whatsapp"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884 0 2.225.659 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+        <a href="https://instagram.com/theglowprotocoll" target="_blank" class="social-btn instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.848 0-3.204.012-3.584.07-4.849.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="#" class="social-btn whatsapp">
+            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884 0 2.225.659 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </a>
+        <a href="#" class="social-btn telegram">
+            <svg viewBox="0 0 24 24"><path d="M21.82 3.87L2.14 11.45C0.8 11.99 0.81 12.74 1.9 13.07L6.95 14.65L18.63 7.28C19.18 6.95 19.68 7.13 19.27 7.5L9.8 16.05H9.79L9.77 16.06L9.42 21.28C9.93 21.28 10.15 21.05 10.44 20.77L12.89 18.39L17.98 22.15C18.92 22.67 19.6 22.4 19.83 21.28L23.16 5.6C23.51 4.22 22.64 3.6 21.82 3.87Z" fill="white"/></svg>
+        </a>
     </div>
 
-    <footer class="text-center" style="padding: 40px 0; color: #444; font-size: 10px;">
-        © 2026 DEEP GLOW PROTOCOL ® • THE BIOLOGICAL STANDARD.
+    <footer class="section text-center" style="padding: 40px 0; border-top: 1px solid var(--border-color);">
+        <div class="container" style="font-size: 10px; color: var(--text-light); letter-spacing: 2px;">
+            © 2026 DEEP GLOW PROTOCOL ® • THE BIOLOGICAL STANDARD. ALL RIGHTS RESERVED.
+        </div>
     </footer>
 
     <script>
         // FAQ Toggle
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', () => {
-                const parent = item.parentElement;
-                parent.classList.toggle('active');
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const isOpen = question.classList.contains('active');
+                faqQuestions.forEach(q => q.classList.remove('active'));
+                if (!isOpen) { question.classList.add('active'); }
             });
         });
 
-        // Language Selector Toggle
+        // Language Selector
         const langBtn = document.getElementById('langBtn');
         const langDropdown = document.getElementById('langDropdown');
         langBtn.addEventListener('click', (e) => {
@@ -191,5 +244,6 @@
         });
         document.addEventListener('click', () => langDropdown.classList.remove('active'));
     </script>
+
 </body>
 </html>
